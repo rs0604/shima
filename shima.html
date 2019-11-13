@@ -6,24 +6,20 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body class="noise">
-
-        <p>[Shima@Unalus:~]$ whoami</p>
-        <button onclick="typeWriter()">Click me</button>
-
-        <p>Name: SHIMA Ryosuke</p>
-        <p>Age:  34</p>
         <p id="demo"></p>
-        Location: Sapporo, Hokkaido
-
-        System.out.println(%d#$);
-        <div id='app'>{{ message }}</div>
+        <!-- <div id='app'>{{ message }}</div> -->
       
 
     </body>
 
     <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
     <script>
+     var prompt = '[Shima@Unalus:~]$ ';
+
      var app = new Vue({
          el: '#app',
          data: {
@@ -31,16 +27,43 @@
          }
      })
 
-var i = 0;
-var txt = 'Lorem ipsum dummy text blabla.';
-var speed = 50;
-function typeWriter() {
-  if (i < txt.length) {
-    document.getElementById("demo").innerHTML += txt.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }
-}
+     async function typeWriter(text, delay, speed) {
+         var i;
+         await sleep(delay);
+         for(i = 0; i < text.length; i++) {
+             document.getElementById("demo").innerHTML += text.charAt(i);
+             await sleep(speed);
+         }
+     }
 
+     async function lineOutput(text, delay) {
+         await sleep(delay);
+         document.getElementById("demo").innerHTML += '<br>';
+         document.getElementById("demo").innerHTML += text;
+     }
+
+     async function drawText() {
+         await lineOutput(prompt, 1000);
+         await typeWriter('whoami', 2000, 100);
+         await lineOutput('', 0);
+         await lineOutput('Name: SHIMA Ryosuke', 1500);
+         await lineOutput('Age:  34', 600);
+         await lineOutput('Location: Sapporo, Hokkaido, Japan', 1200);
+         await lineOutput('<h1>Error: Permission denied.</h1>', 1000);
+
+         await lineOutput('', 0);
+         await lineOutput(prompt, 1000);
+     }
+
+     window.onload = function(){
+         drawText();
+     };
+
+
+     async function sleep(msec) {
+         return new Promise(function(resolve) {
+             setTimeout(function() {resolve()}, msec);
+         })
+     }
     </script>
 </html>
