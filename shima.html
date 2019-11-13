@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body class="noise">
+
+        <p>[Shima@Unalus:~]$ whoami</p>
+        <button onclick="typeWriter()">Click me</button>
+
+        <p>Name: SHIMA Ryosuke</p>
+        <p>Age:  34</p>
+        <p id="demo"></p>
+        Location: Sapporo, Hokkaido
+
+        System.out.println(%d#$);
+        <div id='app'>{{ message }}</div>
+      
+
+    </body>
+
+    <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+     var app = new Vue({
+         el: '#app',
+         data: {
+             message: 'Hello Vue!'
+         }
+     })
+
+var i = 0;
+var txt = 'Lorem ipsum dummy text blabla.';
+var speed = 50;
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+    </script>
+</html>

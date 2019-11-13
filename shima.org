@@ -1,0 +1,22 @@
+* 書きたいこと
+
+** 実績
+    EC Site Platform
+    Web Order System
+    Video Game Modding
+    
+    
+* 相手が知りたいこと
+** この人は何ができるか
+   PHP
+   Linux
+   Agile Development
+   
+** 何がしたいのか
+   Game Develop
+   
+** 仕事・人生・世界について、どう考えているか
+   比重1: お金：円マーク
+   比重2: 奉仕の精神：ハートマーク
+   比重4: 好奇心：電球マーク
+   比重3: 反骨心：アナーキーマーク
